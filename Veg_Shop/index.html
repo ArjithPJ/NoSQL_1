@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>JS For Beginners</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <h1>Veg Shop</h1>
+    </header>
+
+    <section class="container" id="container">
+      <form id="my-form">
+        <div class="msg"></div>
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" id="name">
+        </div>
+        <div>
+          <label for="email">Price:</label>
+          <input type="text" id="price">
+        </div>
+        <div>
+          <label for="phone">Quantity:</label>
+          <input type="text" id="quantity">
+        </div>
+        <input class="btn" type="submit" value="ADD TO SHOP">
+      </form>
+
+      <ul id="users"></ul>
+
+      <!-- <ul class="items">
+        <li class="item">Item 1</li>
+        <li class="item">Item 2</li>
+        <li class="item">Item 3</li>
+      </ul> -->
+    </section>
+    <h1 id="'total" value="">Total:</h1><p id="number">0</p>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.5/axios.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

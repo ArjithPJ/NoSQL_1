@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet"  href="home.css">
+    <link rel="stylesheet" href="search.css">
+    <link rel="stylesheet"  href="admin.css">
+</head>
+<body>
+    <!-- <div class="container">
+        <h2> Contact</h2>
+    </div> -->
+    
+    <div class="container">
+        
+        <div class="groups">
+            <div class="App">
+                <h2><i class="fas fa-comments"></i> Group Chat</h2>
+                <button id="createGroupButton">+</button>
+            </div>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Create New Group</h2>
+                    <form id="groupForm">
+                        <label for="groupName">Group Name:</label><br>
+                        <input type="text" id="groupName" name="groupName"><br>
+                        <label for="contacts">Contacts:</label><br>
+                        <div id="userList"></div> <!-- Container for user list -->
+                        <br>
+                        <button type="submit" id="create-group-btn">Create Group</button>
+                    </form>
+                </div>
+            </div>
+            <div id="myModal-editgroup" class="modal-editgroup">
+                <div class="modal-editcontent">
+                    <span class="close-editGroup">&times;</span>
+                    <h2>Edit Group</h2>
+                    <div class="tabs">
+                        <button class="tablinks" onclick="openTab(event, 'addMembers')">Add Members</button>
+                        <button class="tablinks" onclick="openTab(event, 'removeMembers')">Remove Members</button>
+                        <button class="tablinks" onclick="openTab(event, 'adminRights')">Admin Rights</button>
+                    </div>
+            
+                    <!-- Tab content for adding members -->
+                    <div id="addMembers" class="tabcontent" style="display: none;">
+                        <!-- Content for adding members goes here -->
+                        <form id="addMembersForm">
+                            <label for="searchMembers">Search Members:</label><br>
+                            <input type="text" id="searchMembers" name="searchMembers"><br>
+                            <div id="searchResults" class="search-results"></div><br>
+                            <div id="selectedMembersList"></div><br> <!-- Display selected members here -->
+                             <!-- Dropdown-like search results -->
+                            <button type="button" id="add-more">Add Members</button>
+                            
+                        </form>
+                    </div>
+                    
+            
+                    <!-- Tab content for removing members -->
+                    <div id="removeMembers" class="tabcontent" style="display: none;">
+                        <!-- Content for removing members goes here -->
+                        <!-- Example: Form for removing members -->
+                        <form id="removeMembersForm">
+                            <label for="removeSelectedMembers">Remove Members:</label><br>
+                            <select id="removeSelectedMembers" name="removeSelectedMembers">
+                                <option value="0" selected>Select</option>
+                                <!-- Options for selecting members to remove will be dynamically added here -->
+                            </select><br>
+                            <div id="removeselectedMembersList"></div><br>
+                            <button type="submit" id="remove-button">Remove Members</button>
+                        </form>
+                    </div>
+            
+                    <!-- Tab content for assigning admin rights -->
+                    <div id="adminRights" class="tabcontent" style="display: none;">
+                        <!-- Content for assigning admin rights goes here -->
+                        <!-- Example: Form for assigning admin rights -->
+                        <form id="adminRightsForm">
+                            <label for="adminMembers">Assign Admin Rights:</label><br>
+                            <select id="adminMembers" name="adminMembers">
+                                <option value="0" selected>Select</option>
+                                <!-- Options for selecting members to assign admin rights -->
+                            </select><br>
+                            <div id="new-admins"></div><br>
+                            <button type="submit" id="add-admin-button">Assign Admin Rights</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="your-groups">
+                <h2>Chats</h2>
+            </div>  
+        </div>
+        <div class="contents">
+            <div class="chats" id="chats">
+            </div>
+            <div class="chat-container" style="display: none;">
+                <div id="message-container">
+                    <input id="message" type="text" placeholder="Type your message...">
+                    <button id="send">➤</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
+    <script>const socket = io('http://localhost:3000');</script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="index.js"></script>
+    <script src="createGroup.js"></script>
+    <script src="groupList.js"></script>
+    
+    <script>
+        function openTab(evt, tabName) {
+            // Get all elements with class="tabcontent" and hide them
+            var tabcontent = document.getElementsByClassName("tabcontent");
+            for (var i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+    
+            // Get all elements with class="tablinks" and remove the class "active"
+            var tablinks = document.getElementsByClassName("tablinks");
+            for (var i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+    
+            // Show the current tab and add an "active" class to the button that opened the tab
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+    <script src="addMembers.js"></script>
+    <script src="removeMembers.js"></script>
+    <script src="addAdmins.js"></script>
+</body>
+</html>
